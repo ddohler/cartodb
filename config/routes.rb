@@ -263,7 +263,11 @@ CartoDB::Application.routes.draw do
   end
 
   namespace :superadmin do
-    resources :users
+    resources :users do
+      collection do
+        get '/:id/dump' => 'users#dump'
+      end
+    end
     resources :organizations
     resources :synchronizations
   end
